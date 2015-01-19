@@ -1,5 +1,6 @@
 from flask import render_template
 from app import app
+import matplotlib.pyplot as plt, mpld3
 
 @app.route('/')
 @app.route('/index')
@@ -25,6 +26,13 @@ def cities_page_fancy():
 @app.route("/dashboard")
 def my_dashboard():
 	name = 'Marruecos'
+
+	# mpld3 to create plot 
+	fig, ax = plt.subplots()
+	ax.plot([3,1,4,1,5], 'k-')
+	my_plot = mpld3.fig_to_html(fig)
+
 	return render_template('dashboard.html',
-		user = {'nickname': name}
+		user = {'nickname': name},
+		my_plot = my_plot
 		)
