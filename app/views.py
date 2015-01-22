@@ -36,3 +36,5 @@ def my_dashboard():
 		user = {'nickname': name},
 		my_plot = my_plot
 		)
+
+# for some reason, this does not render all the time
