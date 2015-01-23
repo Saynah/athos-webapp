@@ -27,14 +27,16 @@ def cities_page_fancy():
 def my_dashboard():
 	name = 'Marruecos'
 
-	# mpld3 to create plot 
-	fig, ax = plt.subplots()
-	ax.plot([3,1,4,1,5], 'k-')
-	my_plot = mpld3.fig_to_html(fig)
+	x = [1, 2, 3, 4, 5]
+	y = [2, 6, 2, 7, 8]
 
 	return render_template('dashboard.html',
 		user = {'nickname': name},
-		my_plot = my_plot
+		my_plot = html_line_plot(x,y)
 		)
 
-# for some reason, this does not render all the time
+def html_line_plot(x,y):
+	# mpld3 to create line plot 
+	fig, ax = plt.subplots()
+	ax.plot(x, y, 'k-')
+	return mpld3.fig_to_html(fig)
